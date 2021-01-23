@@ -4,22 +4,20 @@
 
     <data>
         <variable
-            name="registrationViewModel"
-            type="com.icbt.magula.ui.registration.RegistrationViewModel" />
+            name="loginViewModel"
+            type="com.icbt.magula.ui.login.LoginViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.registration.RegistrationFragment">
+        tools:context=".ui.login.LoginFragment">
 
         <TextView
-            android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@{registrationViewModel.text}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+            android:text="@{loginViewModel.text}"/>
 
     </FrameLayout>
 </layout>
