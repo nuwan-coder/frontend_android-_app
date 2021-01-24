@@ -32,11 +32,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/choose_account_type_image_view"
-            app:layout_constraintTop_toTopOf="@+id/choose_account_type_image_view"
-            app:layout_constraintBottom_toBottomOf="@id/choose_account_type_image_view"
             android:text="@string/choose_account_question"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintBottom_toBottomOf="@id/choose_account_type_image_view"
+            app:layout_constraintStart_toEndOf="@+id/choose_account_type_image_view"
+            app:layout_constraintTop_toTopOf="@+id/choose_account_type_image_view" />
 
         <RadioGroup
             android:id="@+id/choose_account_type_radio_button_group"
@@ -50,16 +50,16 @@
                 android:id="@+id/service_account_radio_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/service_account_type"
                 android:checked="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+                android:text="@string/service_account_type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
             <RadioButton
                 android:id="@+id/customer_account_radio_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/customer_account_type"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
         </RadioGroup>
 
