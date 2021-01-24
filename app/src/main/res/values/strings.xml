@@ -10,11 +10,16 @@
     <string name="menu_home">Home</string>
     <string name="menu_registration">Registration</string>
     <string name="menu_login">Login</string>
+    <string name="menu_service_account">Service Account</string>
+    <string name="menu_customer_account">Customer Account</string>
+
+
     <string name="content_description_hotel">hotels</string>
     <string name="content_description_chooseAccount">Choose Account Image</string>
 
     <string name="choose_account_question">Select you want account type?</string>
     <string name="service_account_type">Service Account</string>
     <string name="customer_account_type">Customer Account</string>
+
     <string name="next_button">Next</string>
 </resources>

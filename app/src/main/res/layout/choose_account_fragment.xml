@@ -6,6 +6,10 @@
         <variable
             name="chooseAccountViewModel"
             type="com.icbt.magula.ui.choose_account.ChooseAccountViewModel" />
+
+        <variable
+            name="chooseAccountFragment"
+            type="com.icbt.magula.ui.choose_account.ChooseAccountFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,12 +47,15 @@
             app:layout_constraintStart_toStartOf="@id/choose_account_type_question">
 
             <RadioButton
+                android:id="@+id/service_account_radio_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/service_account_type"
+                android:checked="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
 
             <RadioButton
+                android:id="@+id/customer_account_radio_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/customer_account_type"
@@ -57,6 +64,7 @@
         </RadioGroup>
 
         <Button
+            android:onClick="@{() -> chooseAccountFragment.onNextButtonClick()}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"

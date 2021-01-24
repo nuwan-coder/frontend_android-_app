@@ -19,6 +19,23 @@
         android:id="@+id/nav_choose_account"
         android:name="com.icbt.magula.ui.choose_account.ChooseAccountFragment"
         android:label="@string/menu_registration"
-        tools:layout="@layout/choose_account_fragment"/>
+        tools:layout="@layout/choose_account_fragment">
+        <action
+            android:id="@+id/action_nav_choose_account_to_nav_service_account"
+            app:destination="@id/nav_service_account" />
+        <action
+            android:id="@+id/action_nav_choose_account_to_customerAccountFragment"
+            app:destination="@id/customerAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_service_account"
+        android:name="com.icbt.magula.ui.service_account.ServiceAccountFragment"
+        android:label="@string/menu_service_account"
+        tools:layout="@layout/service_account_fragment" />
+    <fragment
+        android:id="@+id/customerAccountFragment"
+        android:name="com.icbt.magula.ui.customer_account.CustomerAccountFragment"
+        android:label="@string/menu_customer_account"
+        tools:layout="@layout/customer_account_fragment" />
 
 </navigation>
