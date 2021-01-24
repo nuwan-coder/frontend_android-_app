@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">M A G U L A</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -16,10 +16,19 @@
 
     <string name="content_description_hotel">hotels</string>
     <string name="content_description_chooseAccount">Choose Account Image</string>
+    <string name="content_description_hotelName">Hotel Name</string>
+    <string name="content_description_address">Address</string>
+    <string name="content_description_mobile_number">Mobile Number</string>
+    <string name="content_description_price">Price</string>
 
     <string name="choose_account_question">Select you want account type?</string>
     <string name="service_account_type">Service Account</string>
     <string name="customer_account_type">Customer Account</string>
 
     <string name="next_button">Next</string>
+    <string name="address">Address</string>
+    <string name="mobile_number">077–1234567</string>
+    <string name="register">Register</string>
+    <string name="cancel_button" tools:ignore="ButtonCase">cancel</string>
+    <string name="price_per_plate">Price per plate</string>
 </resources>
