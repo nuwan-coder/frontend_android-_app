@@ -42,6 +42,12 @@
         android:id="@+id/customerAccountFragment"
         android:name="com.icbt.magula.ui.customer_account.CustomerAccountFragment"
         android:label="@string/menu_customer_account"
-        tools:layout="@layout/customer_account_fragment" />
+        tools:layout="@layout/customer_account_fragment" >
+        <action
+            android:id="@+id/action_customerAccountFragment_to_nav_home"
+            app:destination="@id/nav_home"
+            app:popUpTo="@id/nav_home"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>
