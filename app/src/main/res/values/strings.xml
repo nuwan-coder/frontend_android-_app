@@ -12,6 +12,7 @@
     <string name="menu_login">Login</string>
     <string name="menu_service_account">Service Account</string>
     <string name="menu_customer_account">Customer Account</string>
+    <string name="menu_plan">Plan</string>
 
 
     <string name="content_description_hotel">hotels</string>
@@ -20,6 +21,9 @@
     <string name="content_description_address">Address</string>
     <string name="content_description_mobile_number">Mobile Number</string>
     <string name="content_description_price">Price</string>
+    <string name="content_description_username">Username</string>
+    <string name="content_description_password">password</string>
+    <string name="content_description_people">people</string>
 
     <string name="choose_account_question">Select you want account type?</string>
     <string name="service_account_type">Service Account</string>
@@ -39,4 +43,8 @@
     <string name="registration">registration</string>
     <string name="cancel">Cancel</string>
     <string name="email">Email</string>
+    <string name="plan">Plan</string>
+    <string name="your_budget">Your Budget</string>
+    <string name="number_of_people">Number of people</string>
+    <string name="find">Find</string>
 </resources>
