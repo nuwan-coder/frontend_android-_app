@@ -47,23 +47,24 @@
             app:layout_constraintStart_toStartOf="@id/choose_account_type_question">
 
             <RadioButton
-                android:id="@+id/service_account_radio_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/service_account_type"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-
-            <RadioButton
                 android:id="@+id/customer_account_radio_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/customer_account_type"
+                android:checked="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <RadioButton
+                android:id="@+id/service_account_radio_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/service_account_type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
         </RadioGroup>
 
         <Button
+            android:id="@+id/next_button"
             android:onClick="@{() -> chooseAccountFragment.onNextButtonClick()}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,6 +74,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/next_button"/>
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/next_button"
+            app:layout_constraintStart_toStartOf="@+id/next_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/teal_500"
+            android:text="warning you first need to create user account!"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
