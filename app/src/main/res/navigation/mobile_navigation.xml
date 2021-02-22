@@ -14,7 +14,13 @@
         android:id="@+id/nav_login"
         android:name="com.icbt.magula.ui.login.LoginFragment"
         android:label="@string/menu_login"
-        tools:layout="@layout/login_fragment"/>
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_nav_login_to_nav_home"
+            app:destination="@id/nav_home"
+            app:popUpTo="@id/nav_home"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/nav_choose_account"
         android:name="com.icbt.magula.ui.choose_account.ChooseAccountFragment"
@@ -53,6 +59,10 @@
         android:id="@+id/nav_plan"
         android:name="com.icbt.magula.ui.plan.PlanFragment"
         android:label="@string/menu_plan"
-        tools:layout="@layout/plan_fragment" />
+        tools:layout="@layout/plan_fragment" >
+        <action
+            android:id="@+id/action_nav_plan_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 
 </navigation>

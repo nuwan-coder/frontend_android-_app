@@ -5,16 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.icbt.magula.R
+import com.icbt.magula.data.db.AppDatabase
+import com.icbt.magula.data.network.MyApi
+import com.icbt.magula.data.network.ServiceResponse
+import com.icbt.magula.data.repository.UserRepository
 import com.icbt.magula.databinding.FragmentHomeBinding
 import com.icbt.magula.ui.adapter.HomeRecyclerViewAdapter
+import com.icbt.magula.ui.listner.AuthListner
+import com.icbt.magula.ui.utils.toast
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), AuthListner {
 
-    private val viewModel: HomeViewModel by viewModels()
+    private lateinit var viewModel: HomeViewModel
     private lateinit var binding:FragmentHomeBinding
     private lateinit var recyclerView: RecyclerView
 
@@ -23,6 +30,12 @@ class HomeFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        val api = MyApi();
+        val db = AppDatabase(requireContext())
+        val repository = UserRepository(api,db)
+        val factory = HomeViewModelFactory(repository,viewLifecycleOwner,requireActivity(),requireContext())
+
+        viewModel = ViewModelProviders.of(this,factory).get(HomeViewModel::class.java)
         binding = FragmentHomeBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -32,11 +45,35 @@ class HomeFragment : Fragment() {
         binding.apply {
             homeViewModel = viewModel
         }
+        viewModel.authListner = this
 
-        val hotels = listOf("A","b","c","d","e","f","g","h","i")
-
+//        var hotels: List<ServiceResponse>? = null
+//
         recyclerView = view.findViewById(R.id.home_recycler_view)
-        recyclerView.adapter = HomeRecyclerViewAdapter(hotels)
-        recyclerView.layoutManager = LinearLayoutManager(context)
+//        recyclerView.adapter = hotels?.let { HomeRecyclerViewAdapter(it) }
+//        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        viewModel.getServices()
+
+        viewModel.services.observe(viewLifecycleOwner, Observer { service ->
+            recyclerView.also {
+                it.layoutManager = LinearLayoutManager(requireContext())
+                it.setHasFixedSize(true)
+                it.adapter = HomeRecyclerViewAdapter(service)
+            }
+        })
+
+
+    }
+
+    override fun onCreate() {
+    }
+
+    override fun onSuccess(message: String) {
+        context?.toast(message)
+    }
+
+    override fun onFailure(message: String) {
+        context?.toast(message)
     }
 }

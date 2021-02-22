@@ -35,9 +35,11 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/firstName"
                     android:hint="@string/first_name">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:text="@={customerAccountViewModel.firstName}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text" />
@@ -51,6 +53,7 @@
                     android:hint="@string/last_name">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:text="@={customerAccountViewModel.lastName}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text" />
@@ -64,6 +67,7 @@
                     android:hint="@string/username">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:text="@={customerAccountViewModel.userName}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text" />
@@ -77,6 +81,7 @@
                     android:hint="@string/address">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:text="@={customerAccountViewModel.email}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress" />
@@ -90,6 +95,7 @@
                     android:hint="@string/n_i_c">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:text="@={customerAccountViewModel.nic}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text" />
@@ -103,6 +109,7 @@
                     android:hint="@string/contact_no">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:text="@={customerAccountViewModel.contactNo}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="phone" />
@@ -116,6 +123,7 @@
                     android:hint="@string/password">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:text="@={customerAccountViewModel.password}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword" />
@@ -153,6 +161,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            android:onClick="@{customerAccountViewModel::onRegistrationButtonClick}"
             android:id="@+id/button2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

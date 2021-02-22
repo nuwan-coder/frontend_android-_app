@@ -35,7 +35,6 @@ class LoginViewModel(
         //success
         val loginResponse = repository.userLogin(email!!,password!!)
         if(loginResponse!=null){
-            authListner?.onSuccess("Login Successful")
 
             loginResponse.observe(viewLifecycleOwner, Observer {
                authListner?.onSuccess(it)
@@ -46,6 +45,8 @@ class LoginViewModel(
                 editor.apply()
                 editor.commit()
             })
+            authListner?.onSuccess("Login Successful")
+
         }
     }
 

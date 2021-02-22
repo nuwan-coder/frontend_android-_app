@@ -1,11 +1,10 @@
 package com.icbt.magula.data.repository
 
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.icbt.magula.data.db.AppDatabase
-import com.icbt.magula.data.db.entyties.Token
-import com.icbt.magula.data.network.Login
-import com.icbt.magula.data.network.MyApi
+import com.icbt.magula.data.network.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,7 +13,7 @@ import retrofit2.Response
 class UserRepository(
         private val api: MyApi,
         private val db:AppDatabase
-) {
+) : SafeApiRequest() {
 
     fun userLogin(email:String, password:String): LiveData<String> {
         val loginResponse = MutableLiveData<String>()
@@ -36,7 +35,51 @@ class UserRepository(
         return loginResponse
     }
 
-    suspend fun saveToken(token:Token) = db.getTokenDao().upsert(token)
+    fun userRegistration(firstName: String, lastName: String, username: String, email: String,
+                         nic: String, contactNo: String, password: String):LiveData<String>{
+        val registrationResponse = MutableLiveData<String>()
 
-    //suspend fun getToken() = db.getTokenDao().getToken()
+        api.registration(Registration(firstName, lastName, username, email, nic, contactNo, password))
+                .enqueue(object :Callback<ResponseBody>{
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        registrationResponse.value = t.message
+                    }
+
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        if(response.isSuccessful){
+                            registrationResponse.value = response.body()?.string()
+                        }else{
+                            registrationResponse.value = response.errorBody()?.string()
+                        }
+                    }
+
+                })
+        return registrationResponse
+
+    }
+
+    fun serviceRegistration(hotelName:String, address:String, contactNo:String, email:String,
+                         pricePerPlate:String, password:String):LiveData<String>{
+        val serviceRegistrationResponse = MutableLiveData<String>()
+
+        api.serviceRegistration(ServiceRegistration(hotelName, address, contactNo, email, pricePerPlate, password))
+                .enqueue(object :Callback<ResponseBody>{
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        serviceRegistrationResponse.value = t.message
+                    }
+
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        if(response.isSuccessful){
+                            serviceRegistrationResponse.value = response.body()?.string()
+                        }else{
+                            serviceRegistrationResponse.value = response.errorBody()?.string()
+                        }
+                    }
+
+                })
+        return serviceRegistrationResponse
+
+    }
+
+    suspend fun getServices() = apiRequest { api.getUsers() }
 }

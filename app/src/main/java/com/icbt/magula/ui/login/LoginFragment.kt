@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
+import com.icbt.magula.R
 import com.icbt.magula.data.db.AppDatabase
 import com.icbt.magula.data.network.MyApi
 import com.icbt.magula.data.repository.UserRepository
@@ -38,6 +40,7 @@ class LoginFragment : Fragment(), AuthListner {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             loginViewModel = viewModel
+            loginAccountFragment =this@LoginFragment
         }
         binding.loginViewModel?.authListner = this
     }
@@ -49,6 +52,7 @@ class LoginFragment : Fragment(), AuthListner {
     override fun onSuccess(message: String) {
         binding.progressBar.hide()
         context?.toast(message)
+        findNavController().navigate(R.id.action_nav_login_to_nav_home)
     }
 
     override fun onFailure(message:String) {
@@ -56,5 +60,8 @@ class LoginFragment : Fragment(), AuthListner {
         context?.toast(message)
     }
 
+    fun onCancel(){
+        findNavController().navigate(R.id.action_nav_login_to_nav_home)
+    }
 
 }

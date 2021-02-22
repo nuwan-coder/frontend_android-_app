@@ -8,6 +8,10 @@
         <variable
             name="loginViewModel"
             type="com.icbt.magula.ui.login.LoginViewModel" />
+
+        <variable
+            name="LoginAccountFragment"
+            type="com.icbt.magula.ui.login.LoginFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -91,7 +95,7 @@
                     android:contentDescription="@string/content_description_password" />
 
                 <Button
-                    android:onClick="@{loginViewModel::onCancelButtonClick}"
+                    android:onClick="@{() -> LoginAccountFragment.onCancel()}"
                     android:id="@+id/button5"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"

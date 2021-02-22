@@ -6,6 +6,10 @@
         <variable
             name="homeViewModel"
             type="com.icbt.magula.ui.home.HomeViewModel" />
+
+        <variable
+            name="ServiceResponse"
+            type="com.icbt.magula.data.network.ServiceResponse" />
     </data>
 
     <FrameLayout

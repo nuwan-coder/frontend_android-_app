@@ -30,7 +30,7 @@
     <string name="customer_account_type">User Account</string>
 
     <string name="next_button">Next</string>
-    <string name="address">Email</string>
+    <string name="address">Address</string>
     <string name="mobile_number">077–1234567</string>
     <string name="price_per_plate">Price per plate</string>
     <string name="first_name">First Name</string>

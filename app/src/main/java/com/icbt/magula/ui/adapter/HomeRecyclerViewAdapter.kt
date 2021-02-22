@@ -7,8 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.icbt.magula.R
+import com.icbt.magula.data.network.ServiceResponse
 
-class HomeRecyclerViewAdapter(private val hotels:List<String>)
+class HomeRecyclerViewAdapter(private val hotels: List<ServiceResponse>)
     :RecyclerView.Adapter<HomeRecyclerViewAdapter.HomeRecyclerViewHolder>() {
 
     class HomeRecyclerViewHolder(view:View):RecyclerView.ViewHolder(view){
@@ -26,6 +27,6 @@ class HomeRecyclerViewAdapter(private val hotels:List<String>)
 
     override fun onBindViewHolder(holder: HomeRecyclerViewHolder, position: Int) {
         holder.imageView.setImageResource(R.drawable.ic_hotel)
-        holder.textView.text = hotels[position]
+        holder.textView.text = hotels[position].hotelName.toString()
     }
 }
