@@ -13,6 +13,8 @@
     <string name="menu_service_account">Seller Account</string>
     <string name="menu_customer_account">User Account</string>
     <string name="menu_plan">Plan</string>
+    <string name="menu_car_rental_service">Car rental service</string>
+    <string name="menu_photography">Photography service</string>
 
 
     <string name="content_description_hotel">hotels</string>

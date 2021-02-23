@@ -20,6 +20,14 @@
             android:id="@+id/nav_choose_account"
             android:icon="@drawable/ic_menu_registration"
             android:title="@string/menu_registration" />
+        <item
+            android:id="@+id/nav_car_rental_account"
+            android:icon="@drawable/ic_car"
+            android:title="@string/menu_car_rental_service" />
+        <item
+            android:id="@+id/nav_photography_account"
+            android:icon="@drawable/ic_photography"
+            android:title="@string/menu_photography" />
     </group>
 
 </menu>

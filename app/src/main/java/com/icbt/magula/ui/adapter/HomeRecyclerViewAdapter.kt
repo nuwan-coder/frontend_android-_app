@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.icbt.magula.R
 import com.icbt.magula.data.network.ServiceResponse
 
-class HomeRecyclerViewAdapter(private val hotels: List<ServiceResponse>)
+class HomeRecyclerViewAdapter(private val hotels: List<ServiceResponse>,val images: List<Int>)
     :RecyclerView.Adapter<HomeRecyclerViewAdapter.HomeRecyclerViewHolder>() {
 
     class HomeRecyclerViewHolder(view:View):RecyclerView.ViewHolder(view){
@@ -26,7 +26,9 @@ class HomeRecyclerViewAdapter(private val hotels: List<ServiceResponse>)
     override fun getItemCount(): Int = hotels.size
 
     override fun onBindViewHolder(holder: HomeRecyclerViewHolder, position: Int) {
-        holder.imageView.setImageResource(R.drawable.ic_hotel)
+
+        holder.imageView.setImageResource(images[position])
         holder.textView.text = hotels[position].hotelName.toString()
+
     }
 }

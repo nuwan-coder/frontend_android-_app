@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.icbt.magula.R
 import com.icbt.magula.data.db.AppDatabase
 import com.icbt.magula.data.network.MyApi
-import com.icbt.magula.data.network.ServiceResponse
 import com.icbt.magula.data.repository.UserRepository
 import com.icbt.magula.databinding.FragmentHomeBinding
 import com.icbt.magula.ui.adapter.HomeRecyclerViewAdapter
@@ -55,11 +54,15 @@ class HomeFragment : Fragment(), AuthListner {
 
         viewModel.getServices()
 
+        var images =
+                listOf<Int>(R.drawable.a, R.drawable.c,R.drawable.d,R.drawable.f)
+
+
         viewModel.services.observe(viewLifecycleOwner, Observer { service ->
             recyclerView.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = HomeRecyclerViewAdapter(service)
+                it.adapter = HomeRecyclerViewAdapter(service,images)
             }
         })
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
 
     <androidx.cardview.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardBackgroundColor="#FFFFFFFF"
@@ -25,7 +25,7 @@
             <ImageView
                 android:id="@+id/hotel_image_view"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="180dp"
                 android:src="@drawable/ic_hotel"
                 android:contentDescription="@string/content_description_hotel" />
 
@@ -34,7 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:gravity="center"
-                android:text="@string/menu_login"/>
+                android:text="@string/menu_login"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         </LinearLayout>
 
