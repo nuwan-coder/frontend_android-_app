@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.icbt.magula.data.db.AppDatabase
 import com.icbt.magula.data.network.*
+import com.icbt.magula.ui.listner.RecyclerViewClickListner
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -82,4 +83,7 @@ class UserRepository(
     }
 
     suspend fun getServices() = apiRequest { api.getUsers() }
+
+    suspend fun getSelectedService(budget:String,nop:String) =
+            apiRequest { api.getSuitableUsers(SelectServiceRequest(budget,nop)) }
 }

@@ -1,7 +1,11 @@
 package com.icbt.magula
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -50,5 +54,25 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val sp: SharedPreferences =
+                this.getSharedPreferences("token", Context.MODE_PRIVATE)
+        val sharedIdValue = sp.getString("token","defaultname")
+
+        when(item.itemId){
+            R.id.action_settings -> {
+
+                this.getSharedPreferences("token", Context.MODE_PRIVATE).edit().clear().commit();
+                Toast.makeText(this,"LOGOUT SUCCESSFUL",Toast.LENGTH_LONG).show()
+            }
+            R.id.action_check -> {
+                //Toast.makeText(this,sharedIdValue,Toast.LENGTH_LONG).show()
+                Toast.makeText(this,sharedIdValue,Toast.LENGTH_LONG).show()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

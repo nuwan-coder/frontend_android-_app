@@ -8,8 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.icbt.magula.R
 import com.icbt.magula.data.network.ServiceResponse
+import com.icbt.magula.ui.listner.RecyclerViewClickListner
 
-class HomeRecyclerViewAdapter(private val hotels: List<ServiceResponse>,val images: List<Int>)
+class HomeRecyclerViewAdapter(private val hotels: List<ServiceResponse>,
+                              val images: List<Int>,
+                              private val listner: RecyclerViewClickListner)
     :RecyclerView.Adapter<HomeRecyclerViewAdapter.HomeRecyclerViewHolder>() {
 
     class HomeRecyclerViewHolder(view:View):RecyclerView.ViewHolder(view){
@@ -29,6 +32,8 @@ class HomeRecyclerViewAdapter(private val hotels: List<ServiceResponse>,val imag
 
         holder.imageView.setImageResource(images[position])
         holder.textView.text = hotels[position].hotelName.toString()
-
+        holder.imageView.setOnClickListener {
+            listner.onRecyclerViewItemClick(hotels[position])
+        }
     }
 }

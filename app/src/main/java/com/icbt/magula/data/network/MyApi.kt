@@ -21,6 +21,10 @@ interface MyApi {
     @GET("api/v1/users")
     suspend fun getUsers():Response<List<ServiceResponse>>
 
+    @POST("api/v1/users")
+    suspend fun getSuitableUsers(@Body selectServiceRequest: SelectServiceRequest)
+            :Response<List<ServiceResponse>>
+
     companion object{
         operator fun invoke():MyApi{
             return Retrofit.Builder()

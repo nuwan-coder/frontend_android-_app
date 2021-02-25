@@ -1,5 +1,9 @@
 package com.icbt.magula.ui.login
 
+import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +42,25 @@ class LoginFragment : Fragment(), AuthListner {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val sp: SharedPreferences =
+                requireContext().getSharedPreferences("token", Context.MODE_PRIVATE)
+        val sharedIdValue = sp.getString("token","defaultname")
+
+        if(sharedIdValue.equals("defaultname")){
+
+        }else{
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("WARNING!!")
+            builder.setMessage("Your already logged in")
+            builder.setPositiveButton("Ok") { dialogInterface: DialogInterface, i: Int ->
+                findNavController().navigate(R.id.action_nav_login_to_nav_home)
+            }
+
+            builder.setCancelable(false)
+            builder.show()
+        }
+
         binding.apply {
             loginViewModel = viewModel
             loginAccountFragment =this@LoginFragment

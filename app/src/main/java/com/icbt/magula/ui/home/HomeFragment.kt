@@ -1,5 +1,7 @@
 package com.icbt.magula.ui.home
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,13 +14,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.icbt.magula.R
 import com.icbt.magula.data.db.AppDatabase
 import com.icbt.magula.data.network.MyApi
+import com.icbt.magula.data.network.ServiceResponse
 import com.icbt.magula.data.repository.UserRepository
 import com.icbt.magula.databinding.FragmentHomeBinding
 import com.icbt.magula.ui.adapter.HomeRecyclerViewAdapter
 import com.icbt.magula.ui.listner.AuthListner
+import com.icbt.magula.ui.listner.RecyclerViewClickListner
 import com.icbt.magula.ui.utils.toast
 
-class HomeFragment : Fragment(), AuthListner {
+class HomeFragment : Fragment(), AuthListner, RecyclerViewClickListner {
 
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding:FragmentHomeBinding
@@ -62,7 +66,7 @@ class HomeFragment : Fragment(), AuthListner {
             recyclerView.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = HomeRecyclerViewAdapter(service,images)
+                it.adapter = HomeRecyclerViewAdapter(service,images,this)
             }
         })
 
@@ -78,5 +82,22 @@ class HomeFragment : Fragment(), AuthListner {
 
     override fun onFailure(message: String) {
         context?.toast(message)
+    }
+
+    override fun onRecyclerViewItemClick(hotel: ServiceResponse) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(hotel.hotelName)
+        builder.setMessage(
+                "Address :\n${hotel.address}\n\n"
+                        +"Email :\n${hotel.email}\n\n"
+                        +"Contact No :\n${hotel.contactNo}\n\n"
+                        +"Price per plate :\n${hotel.pricePerPlate}\n\n"
+        )
+        builder.setPositiveButton("Ok") { dialogInterface: DialogInterface, i: Int ->
+
+        }
+
+        builder.setCancelable(false)
+        builder.show()
     }
 }

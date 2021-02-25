@@ -37,15 +37,16 @@ class LoginViewModel(
         if(loginResponse!=null){
 
             loginResponse.observe(viewLifecycleOwner, Observer {
-               authListner?.onSuccess(it)
+
                 val sp:SharedPreferences =
                     activity.getSharedPreferences("token",Context.MODE_PRIVATE)
                 val editor:SharedPreferences.Editor = sp.edit()
                 editor.putString("token",it)
                 editor.apply()
                 editor.commit()
+                authListner?.onSuccess("LOGIN SUCCESSFUL")
             })
-            authListner?.onSuccess("Login Successful")
+            //authListner?.onSuccess("")
 
         }
     }
