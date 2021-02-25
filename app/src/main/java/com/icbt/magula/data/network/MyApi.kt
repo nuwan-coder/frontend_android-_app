@@ -28,7 +28,7 @@ interface MyApi {
     companion object{
         operator fun invoke():MyApi{
             return Retrofit.Builder()
-                    .baseUrl("http://192.168.1.3:8080/")
+                    .baseUrl("https://test-wedding-app.herokuapp.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(MyApi::class.java)
