@@ -59,7 +59,7 @@ class HomeFragment : Fragment(), AuthListner, RecyclerViewClickListner {
         viewModel.getServices()
 
         var images =
-                listOf<Int>(R.drawable.a, R.drawable.c,R.drawable.d,R.drawable.f)
+                listOf<Int>(R.drawable.a, R.drawable.c,R.drawable.d,R.drawable.f,R.drawable.g,R.drawable.i,R.drawable.j,R.drawable.k)
 
 
         viewModel.services.observe(viewLifecycleOwner, Observer { service ->
